@@ -3,6 +3,7 @@
     min-height: 10rem;
     display: flex;
     flex-direction: column;
+    animation: .5s fadeIn ease-in-out;
 
     box-shadow: 2px 2px 8px $color-bc-accent, -1px -1px 3px $color-bc-accent;
 
@@ -32,8 +33,13 @@
         display: flex;
         flex-direction: column;
         // align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
+        justify-content: space-evenly;
+        padding: 1rem 3rem;
+
+        & .product-name {
+            font-size: 2rem;
+            line-height: 1;
+        }
 
         & .price {
             color: $color-secondary;

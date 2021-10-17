@@ -37,11 +37,12 @@ export default function Navbar({ categories = ['prietas', 'prietos', 'prietes'] 
                 <p>Envío gratis en pedidos superiores a MXN$1,000.00</p>
             </div>
             <div className="navbar__top">
-                <div className="logo">
+                <div className="logo-box">
 
                     <Link href={'/'} >
-                        <a>
+                        <a className='logo' >
                             <Image src="/img/logo.jpg" alt="Vercel Logo" width={72} height={72} />
+                            <h1>Pretty Prieto MX</h1>
                         </a>
                     </Link>
 
@@ -56,11 +57,11 @@ export default function Navbar({ categories = ['prietas', 'prietos', 'prietes'] 
                 <div className="navbar__links">
                     {
                         categories.map(categorie => (
-                            <div key={categorie} className="link">
-                                <ActiveLink className="link" activeClassName='link active' href={`/${categorie}`} >
-                                    <a> {categorie} </a>
-                                </ActiveLink>
-                            </div>
+
+                            <ActiveLink key={categorie} activeClassName='link active' href={`/${categorie}`} >
+                                <a className="link"  > {categorie} </a>
+                            </ActiveLink>
+
                         ))
                     }
                 </div>

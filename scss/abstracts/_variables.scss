@@ -8,3 +8,13 @@ $color-bc-accent: #E4F6EF;
 
 $color-text: #0c241b;
 $color-white: #fff;
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

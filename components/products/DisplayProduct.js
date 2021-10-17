@@ -7,14 +7,14 @@ export default function DisplayProduct({ product }) {
 
     return (
         <Link href={`/${category}/product/${_id}`} >
-            <a className="display-product">
+            <a className="display-product animate__fadeInDown">
                 <div className="display-product__image">
                     <Image alt={name} src={imgs[0]} layout='fill' className='img' ></Image>
                 </div>
                 <div className="display-product__info">
-                    <h3 className="product-name">
+                    <h2 className="product-name">
                         {name}
-                    </h3>
+                    </h2>
                     <span className="price">
                         MXN${price.toLocaleString()}
                     </span>
