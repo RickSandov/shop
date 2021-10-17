@@ -1,0 +1,97 @@
+.navbar {
+    width: 1200px;
+    max-width: 90%;
+    margin: 0 auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $color-bc-accent;
+
+    & .ad {
+        background-color: $color-secondary;
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        color: white;
+        margin-bottom: 2rem;
+    }
+
+    &__top {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & .logo {
+
+            & a {}
+        }
+    }
+
+    &__bottom {
+        width: 100%;
+        display: flex;
+
+    }
+
+    &__links {
+        min-width: 90%;
+        margin: 1rem auto 0 auto;
+        display: flex;
+        justify-content: space-between;
+
+        & .link {
+            @include transition;
+            position: relative;
+            cursor: pointer;
+            padding: 1rem;
+            margin: 0 1rem;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: .3rem;
+                background-color: $color-secondary;
+                left: 50%;
+                bottom: 0;
+                transform: translateX(-50%);
+                @include transition;
+            }
+
+            &:hover {
+
+                &::before {
+                    width: 120%;
+                }
+            }
+
+            & a {
+                position: relative;
+                text-transform: capitalize;
+                padding: 0 1rem;
+                white-space: nowrap;
+
+                &.active {
+                    color: $color-secondary;
+                    position: relative;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 160%;
+                        height: .3rem;
+                        background-color: $color-secondary;
+                        left: 50%;
+                        bottom: -1rem;
+                        transform: translateX(-50%);
+                        @include transition;
+                    }
+                }
+            }
+        }
+
+
+    }
+}

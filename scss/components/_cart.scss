@@ -1,0 +1,35 @@
+.display-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+
+    & svg {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    & p {
+        margin: 0 .5rem;
+        text-transform: uppercase;
+    }
+
+    &__qty {
+        border-radius: 50%;
+        height: 2.5rem;
+        width: 2.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-danger;
+        color: white;
+
+        & span {
+            pointer-events: none;
+        }
+    }
+
+    &:hover {}
+
+}
