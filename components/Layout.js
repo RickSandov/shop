@@ -22,7 +22,7 @@ export default function Layout({ children }) {
             dispatch(updateCart(JSON.parse(storedCart)));
         }
 
-    }, [])
+    }, [dispatch])
 
     return (
         <>
