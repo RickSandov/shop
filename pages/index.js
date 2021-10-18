@@ -1,5 +1,6 @@
 import DisplayProduct from "../components/products/DisplayProduct";
 import Hero from "../components/ui/Hero";
+import Link from 'next/link'
 
 export async function getStaticProps() {
   const res = await fetch('https://prettyprieto.com/api/public/products'); // obtener productos por categoría
@@ -19,7 +20,7 @@ export default function Home({ products }) {
   return (
     <>
       <div className="container">
-        <Hero />
+        <Hero src='/img/halloween.png' />
         <h2
           style={{
             marginBottom: '3rem',
@@ -35,6 +36,12 @@ export default function Home({ products }) {
             ))
           }
         </div>
+
+        <Link href="/Playeras" >
+          <a className="btn" >Ver más</a>
+        </Link>
+
+        <Hero src='/img/octubre.png' />
       </div>
 
     </>
