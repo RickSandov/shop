@@ -23,7 +23,8 @@ export default function Home({ products }) {
         <h2
           style={{
             marginBottom: '3rem',
-            fontSize: '3.5rem',
+            marginTop: '3rem',
+            fontSize: '3rem',
             color: '#006fc3'
           }}
         >Productos Destacados</h2>

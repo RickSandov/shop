@@ -37,12 +37,14 @@
         padding: 3rem 3rem;
 
         & .product-name {
-            font-size: 2rem;
+            font-size: 2.2rem;
             line-height: 1;
         }
 
         & .price {
             color: $color-secondary;
+            font-size: 1.8rem;
+            margin-top: .5rem;
         }
 
     }
