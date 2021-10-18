@@ -5,15 +5,15 @@ export const uiStopToast = () => ({
     type: types.uiStopToast
 })
 
-export const uiActiveToast = (msg = 'El producto se ha agregado a la bolsa') => ({
+export const uiActiveToast = (msg, err) => ({
     type: types.uiActiveToast,
-    payload: msg
+    payload: { msg, err }
 })
 
-export const uiTempToast = (msg) => {
+export const uiTempToast = (msg, err) => {
 
     return (dispatch) => {
-        dispatch(uiActiveToast(msg));
+        dispatch(uiActiveToast(msg, err));
         setTimeout(() => {
             dispatch(uiStopToast())
         }, 4000);

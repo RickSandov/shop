@@ -14,18 +14,21 @@ export default function Layout({ children }) {
 
     useEffect(() => {
 
-        if (!localStorage.getItem('cart')) {
-            dispatch(cartCreate());
-        }
+        const storedCart = localStorage.getItem('cart');
 
+        if (!storedCart) {
+            dispatch(cartCreate());
+        } else {
+            dispatch(updateCart(JSON.parse(storedCart)));
+        }
 
     }, [])
 
     return (
         <>
             <Head>
-                <title>PrettyPrieto</title>
-                <meta name="description" content="PrettyPrieto tienda de ropa en línea" />
+                <title>Pretty Prieto</title>
+                <meta name="description" content="Pretty Prieto tienda de ropa en línea" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Navbar />

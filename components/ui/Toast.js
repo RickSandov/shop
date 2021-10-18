@@ -3,10 +3,10 @@ import { useSelector } from "react-redux"
 
 export default function Toast() {
 
-    const { ui: { toastMsg } } = useSelector(state => state);
+    const { ui: { toastMsg, toastErr } } = useSelector(state => state);
 
     return (
-        <div className="toast">
+        <div className={`toast ${toastErr && 'error'} `}>
             {toastMsg}
         </div>
     )

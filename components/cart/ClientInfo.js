@@ -18,8 +18,13 @@ export default function ClientInfo() {
 
     const { street, col, zip, extNumber, intNumber, refs, name, phoneNum } = formValues;
 
+    const [loading, setLoading] = useState(false);
+
     return (
         <div className="client-info">
+            {
+                loading && <div className="cont-spinner"><div className="spinner"></div></div>
+            }
             <h3>Resumen del pedido</h3>
             <div className="form">
                 <div className="form__item">
@@ -108,7 +113,7 @@ export default function ClientInfo() {
                         />
                     </div>
                 </div>
-                <Checkout formValues={formValues} />
+                <Checkout formValues={formValues} setLoading={setLoading} />
             </div>
         </div>
     )

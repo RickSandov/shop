@@ -1,4 +1,5 @@
 import DisplayProduct from "../components/products/DisplayProduct";
+import Hero from "../components/ui/Hero";
 
 export async function getStaticProps() {
   const res = await fetch('https://prettyprieto.com/api/public/products'); // obtener productos por categoría
@@ -17,14 +18,13 @@ export default function Home({ products }) {
 
   return (
     <>
-
-
       <div className="container">
+        <Hero />
         <h2
           style={{
             marginBottom: '3rem',
-            fontSize: '2.3rem',
-            color: '#D52E2D'
+            fontSize: '3.5rem',
+            color: '#006fc3'
           }}
         >Productos Destacados</h2>
         <div className="products-list">

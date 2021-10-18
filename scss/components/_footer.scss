@@ -30,30 +30,39 @@
     &__link {
         display: block;
         font-size: 1.2rem;
-        color: $color-primary-ligth;
+        color: $color-primary;
         margin-bottom: 0.4rem;
         padding: 0 0.4rem;
         transition: color 0.3s linear;
 
         &:hover {
-            color: $color-text;
+            color: darken($color-primary, 20);
         }
     }
 
     &__heading {
-        color: $color-primary;
+        color: $color-text;
         font-size: 1.6rem;
         font-weight: 600;
         margin-bottom: 1.2rem;
+
+        &.center {
+            text-align: right;
+        }
     }
 
     &__paraph {
         font-size: 1.4rem;
-        text-indent: 1rem;
-        text-align: justify;
+        // text-indent: 1rem;
+        text-align: right;
+
+        &:last-of-type {
+            margin-top: 1rem;
+        }
     }
 
     &__sub {
+        margin-top: 5rem;
         opacity: 0.6s;
     }
 }

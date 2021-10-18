@@ -10,8 +10,6 @@ export default function ProductResume({ product }) {
 
     const { name, product: _id, price, qty, img } = product;
 
-    console.log(_id);
-
     const [quantity, setquantity] = useState(qty)
 
     const total = (+price) * (+quantity);
@@ -29,7 +27,7 @@ export default function ProductResume({ product }) {
     return (
         <div className="products__item">
             <div className="image">
-                <Image alt={name} src={img} layout='fill' className='img' ></Image>
+                <Image alt={name} src={'https://prettyprieto.com' + img} layout='fill' className='img' ></Image>
             </div>
             <div className="info">
                 <h3>{name}</h3>

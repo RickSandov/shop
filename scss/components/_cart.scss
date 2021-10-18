@@ -41,12 +41,14 @@
     max-width: 95%;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
+
 
     @include respond(tab-port) {
         flex-direction: column;
         justify-content: center;
+        margin-top: 6rem;
     }
 
     &-empty {
@@ -59,7 +61,9 @@
         & p {
             font-size: 3rem;
             color: $color-text-light !important;
-            line-height: 1;
+            line-height: 1.2;
+            max-width: 70%;
+            text-align: center;
         }
 
     }
@@ -69,19 +73,19 @@
 .products {
     flex: 0 1 50%;
 
-
-
     width: 1000px;
     max-width: 100%;
     margin: 0 auto;
     display: flex;
-    margin-top: 3rem;
+    flex-direction: column;
+    margin-top: 12rem;
 
     &__item {
         display: flex;
         justify-content: space-between;
-        padding: 0 2rem 0 0;
+        padding: 2rem 2rem 2rem 0;
         align-items: center;
+        border-bottom: solid 1px $color-bc-accent;
 
         @include respond(tab-port) {
             width: 100%;
@@ -105,6 +109,7 @@
         }
 
         & .info {
+            flex: 0 1 50%;
 
             & h3 {
                 font-size: 1.5rem
@@ -152,6 +157,38 @@
 
     }
 
+    & .price-resume {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        margin-top: 3rem;
+
+        & strong {
+            margin-left: 1rem;
+
+        }
+
+        & span {
+            font-size: 1.6rem;
+        }
+
+        & .shipment {
+            margin: 1rem 0;
+            font-size: 1.6rem;
+
+            &.free {
+                color: $color-primary;
+            }
+        }
+
+        & .resume-total {
+            font-size: 2.5rem;
+            border-bottom: 2px solid $color-secondary;
+            color: $color-secondary;
+        }
+
+    }
 
 
 
@@ -165,16 +202,18 @@
     padding: 3rem;
     margin: 2rem 0;
     border-radius: .8rem;
+    position: relative;
 
     @include respond(tab-port) {
         margin-top: 5rem;
     }
 
     & h3 {
-        font-size: 2rem;
+        font-size: 2.3rem;
         line-height: 1;
         margin-bottom: 3rem;
         font-weight: 300;
+        text-align: center;
     }
 
     & .form {
@@ -183,6 +222,7 @@
 
         &__item,
         & .group .form__item {
+            flex: 0 1 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -197,15 +237,29 @@
                 background-color: transparent;
                 border: none;
                 color: white;
-                padding: 1rem;
+                padding: 1rem 1rem .4rem 1rem;
                 border-bottom: 2px solid white;
                 outline: none;
-                width: 50%;
+                width: 100%;
+                text-align: right;
             }
         }
 
         & .group {
             display: flex;
+            text-align: left;
+
+            & .form__item {
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                & input {
+                    width: 50%;
+                }
+
+            }
         }
 
     }

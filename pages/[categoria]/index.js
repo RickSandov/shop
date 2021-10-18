@@ -50,13 +50,28 @@ export default function CategoryPage({ products }) {
 
             {/* <SubcategoriesMenu category={categoria} subcategories={catSubctg} /> */}
 
-            <div className="products-list">
-                {
-                    products.map((product) => (
-                        <DisplayProduct key={product._id} product={product} />
-                    ))
-                }
-            </div>
+            {
+                products.length > 0 ?
+                    (
+                        <div className="products-list">
+                            {
+                                products.map((product) => (
+                                    <DisplayProduct key={product._id} product={product} />
+                                ))
+                            }
+                        </div>
+                    )
+                    :
+                    (
+                        <div className="container-empty">
+                            <p>
+                                Por el momento no hay productos de esta categoría
+                            </p>
+                        </div>
+                    )
+            }
+
+
 
         </div>
     )

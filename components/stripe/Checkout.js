@@ -1,15 +1,18 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import { cartCreate } from '../../actions/cart';
+import { uiTempToast } from '../../actions/ui';
 
-export default function Checkout({ formValues, shipment }) {
+export default function Checkout({ formValues, shipment, setLoading }) {
 
     const { cart } = useSelector(state => state);
 
+    const dispatch = useDispatch();
+
     const stripe = useStripe();
     const elements = useElements();
-
-    const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -59,12 +62,18 @@ export default function Checkout({ formValues, shipment }) {
             const res = await response.json();
 
             console.log(res);
-            setLoading(false);
 
-            // elements.getElement(CardElement).clear();
-
+            if (res.status === 'OK') {
+                setLoading(false);
+                dispatch(uiTempToast('Pago realizado con éxito'));
+                dispatch(cartCreate());
+            } else {
+                dispatch(uiTempToast('Revisa tu información', true));
+            }
 
         } else {
+            setLoading(false);
+            dispatch(uiTempToast('Hubo un error con tu método de pago', true));
             console.log(error.message);
         }
 
@@ -90,14 +99,8 @@ export default function Checkout({ formValues, shipment }) {
                 }}
             />
             <div className="btn">
-                <button disabled={loading} >
-                    {
-                        loading ? (
-                            <div className="loader"></div>
-                        ) : (
-                            'Pagar'
-                        )
-                    }
+                <button disabled={!stripe} >
+                    pagar
                 </button>
             </div>
         </form>

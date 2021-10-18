@@ -7,6 +7,23 @@
     width: 95%;
     margin: 2rem auto;
 
+    &-empty {
+        height: 30rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & p {
+            font-size: 3rem;
+            color: $color-text-light !important;
+            line-height: 1.2;
+            max-width: 70%;
+            text-align: center;
+        }
+
+    }
+
     // & .side-menu {
     //     flex: 0 1 calc(20% - 1rem);
     //     display: flex;

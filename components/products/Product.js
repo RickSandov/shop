@@ -27,7 +27,7 @@ export default function Product({ product }) {
         }
 
         dispatch(cartAddItem(item));
-        dispatch(uiTempToast());
+        dispatch(uiTempToast('El producto se ha agregado a la bolsa'));
 
         console.log(item);
 
@@ -39,7 +39,7 @@ export default function Product({ product }) {
             <div className="product">
 
                 <div className="product__img-box">
-                    <Image alt={name} src={imgs[0]} layout='fill' className='img' ></Image>
+                    <Image alt={name} src={'https://prettyprieto.com' + imgs[0]} layout='fill' className='img' priority ></Image>
                 </div>
 
                 <div className="product__info">
@@ -103,6 +103,6 @@ export default function Product({ product }) {
 
             </div>
 
-        </div>
+        </div >
     )
 }
