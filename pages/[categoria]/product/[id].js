@@ -1,51 +1,18 @@
 import { useRouter } from 'next/router';
 import Product from '../../../components/products/Product';
+import Head from 'next/head';
 
 export async function getStaticPaths() {
 
     // Get products
+    const res = await fetch(`/api/public/products`); // obtener productos por categoría
+    const data = await res.json();
 
-    const products = [
-        {
-            _id: '1',
-            name: 'Chamarra de cuero',
-            description: 'Chamarra de piel de perro',
-            price: 1199,
-            imgs: ['/img/chamarra.jpg'],
-            category: 'prietos',
-            subcategory: 'chaquetas'
-        },
-        {
-            _id: '2',
-            name: 'Camiseta 1',
-            description: 'Camiseta para prietos',
-            price: 499,
-            imgs: ['/img/chamarra.jpg'],
-            category: 'prietos',
-            subcategory: 'camisetas'
-        },
-        {
-            _id: '3',
-            name: 'Camiseta 2',
-            description: 'Camiseta para prietas',
-            price: 499,
-            imgs: ['/img/chamarra.jpg'],
-            category: 'prietas',
-            subcategory: 'camisetas'
-        },
-        {
-            _id: '4',
-            name: 'Hoodie Galaxia',
-            description: 'Hoodie con serigrafía de galaxias',
-            price: 749,
-            imgs: ['/img/chamarra.jpg'],
-            category: 'prietos',
-            subcategory: 'hoodies'
-        }
-    ]
+    const { products } = data;
+
 
     const paths = products.map(product => ({
-        params: { categoria: product.category, id: product._id.toString() }
+        params: { categoria: product.category, id: product._id }
     }))
 
     return {
@@ -55,20 +22,17 @@ export async function getStaticPaths() {
 
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params: { id } }) {
 
     // Get Product
+    const res = await fetch(`/api/public/products?ids=${id}`); // obtener 
+    const data = await res.json();
+
+    const { products } = data;
 
     return {
         props: {
-            product: {
-                _id: '1',
-                name: 'Chamarra de cuero',
-                description: 'Chamarra de piel de perro',
-                price: 750,
-                imgs: ['/img/chamarra.jpg'],
-                category: 'prietos'
-            }
+            product: products[0]
         }
     }
 }
@@ -76,7 +40,15 @@ export async function getStaticProps() {
 export default function ProductPage({ product }) {
 
     return (
-        <Product product={product} />
+
+        <>
+            <Head>
+                <title>{product.name}</title>
+                <meta name="description" content={` ${product.description}`} />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Product product={product} />
+        </>
     )
 
 };

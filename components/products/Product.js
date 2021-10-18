@@ -1,14 +1,37 @@
 import { useState } from 'react'
 import Image from 'next/image'
+import { cartAddItem } from '../../actions/cart';
+import { useDispatch } from 'react-redux';
+import { uiTempToast } from '../../actions/ui';
 
 const tallas = ['S', 'M', 'G', 'XL']
 
 export default function Product({ product }) {
 
+    const dispatch = useDispatch();
+
     const { _id, name, description, price, imgs } = product;
 
     const [counter, setCounter] = useState(1);
-    const [size, setSize] = useState('');
+    const [size, setSize] = useState('S');
+
+    const addToCart = () => {
+
+        const item = {
+            product: _id,
+            qty: counter,
+            price,
+            img: imgs[0],
+            name,
+            size
+        }
+
+        dispatch(cartAddItem(item));
+        dispatch(uiTempToast());
+
+        console.log(item);
+
+    }
 
     return (
         <div className="product-page">
@@ -64,7 +87,9 @@ export default function Product({ product }) {
                     </div>
 
                     <div className="bottom">
-                        <button className="btn-add">
+                        <button
+                            onClick={() => addToCart()}
+                            className="btn-add">
                             Agregar a la bolsa
                         </button>
                         <div className="description">

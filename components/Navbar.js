@@ -4,32 +4,7 @@ import Image from 'next/image';
 import DisplayCart from './cart/DisplayCart';
 import ActiveLink from './ActiveLink';
 
-export async function getStaticProps() {
-
-    // const res = await fetch(url)
-    // const data = await res.json();
-
-    const categories = [
-        {
-            name: 'prietas'
-        },
-        {
-            name: 'prietos'
-        },
-        {
-            name: 'prietes'
-        }
-    ]
-
-    return {
-        props: {
-            categories: categories.map(({ name }) => name)
-        }
-    }
-
-}
-
-export default function Navbar({ categories = ['prietas', 'prietos', 'prietes'] }) {
+export default function Navbar({ categories = ['Playeras', 'Sudaderas', 'Chamarras', 'Camisetas'] }) {
 
     return (
         <nav className='navbar' >

@@ -56,6 +56,7 @@
 
             & .description {
                 margin: 3rem 0;
+                font-size: 1.6rem;
             }
 
             & .btn-add {
@@ -67,6 +68,10 @@
                 padding: 2rem 4rem;
                 cursor: pointer;
                 @include transition;
+
+                @include respond(tab-port) {
+                    margin-top: 3rem;
+                }
 
                 &:hover {
                     background-color: darken($color-secondary, 10);
