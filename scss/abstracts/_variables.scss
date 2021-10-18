@@ -1,20 +1,20 @@
-$color-primary: #308A68;
-$color-primary-ligth: #92B7A9;
-$color-secondary: #D52E2D;
+$color-primary: #308a68;
+$color-primary-ligth: #92b7a9;
+$color-secondary: #d52e2d;
 
-$color-danger: #D52E2D;
+$color-danger: #d52e2d;
 
-$color-bc-accent: #E4F6EF;
+$color-bc-accent: #e4f6ef;
 
 $color-text: #0c241b;
 $color-white: #fff;
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
