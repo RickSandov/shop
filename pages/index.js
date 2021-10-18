@@ -1,7 +1,7 @@
 import DisplayProduct from "../components/products/DisplayProduct";
 
 export async function getStaticProps() {
-  const res = await fetch('/api/public/products'); // obtener productos por categoría
+  const res = await fetch('https://prettyprieto.com/api/public/products'); // obtener productos por categoría
   const data = await res.json();
 
   return {
@@ -17,6 +17,7 @@ export default function Home({ products }) {
 
   return (
     <>
+
 
       <div className="container">
         <h2

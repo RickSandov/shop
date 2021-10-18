@@ -5,7 +5,7 @@ import Head from 'next/head';
 export async function getStaticPaths() {
 
     // Get products
-    const res = await fetch(`/api/public/products`); // obtener productos por categoría
+    const res = await fetch(`https://prettyprieto.com/api/public/products`); // obtener productos por categoría
     const data = await res.json();
 
     const { products } = data;
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { id } }) {
 
     // Get Product
-    const res = await fetch(`/api/public/products?ids=${id}`); // obtener 
+    const res = await fetch(`https://prettyprieto.com/api/public/products?ids=${id}`); // obtener 
     const data = await res.json();
 
     const { products } = data;
