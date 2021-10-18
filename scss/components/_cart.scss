@@ -87,6 +87,10 @@
         align-items: center;
         border-bottom: solid 1px $color-bc-accent;
 
+        &:first-of-type {
+            padding-top: 0;
+        }
+
         @include respond(tab-port) {
             width: 100%;
         }

@@ -9,7 +9,7 @@ import Toast from "./ui/Toast";
 
 export default function Layout({ children }) {
 
-    const { cart, ui } = useSelector(state => state);
+    const { ui } = useSelector(state => state);
     const dispatch = useDispatch();
 
     useEffect(() => {
