@@ -22,3 +22,10 @@ export const setQuantity = (product, qty) => ({
         qty
     }
 })
+
+export const cartDeleteItem = (product) => ({
+    type: types.cartDeleteItem,
+    payload: {
+        product
+    }
+})

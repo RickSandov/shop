@@ -40,6 +40,13 @@ export const cartReducer = (state = [
 
             return [...stateCopy]
 
+        case types.cartDeleteItem:
+            const index = stateCopy.findIndex(({ product }) => product === action.payload.product);
+
+            stateCopy.splice(index, 1);
+
+            return [...stateCopy]
+
         default:
             return state;
     }

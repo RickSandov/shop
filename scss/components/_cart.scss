@@ -94,6 +94,15 @@
             width: 100%;
         }
 
+        & .delete {
+            flex: 0 1 calc(3%);
+            color: $color-secondary;
+            font-size: 2rem;
+            cursor: pointer;
+
+
+        }
+
         & .image {
             width: 100%;
             flex: 0 1 20%;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setQuantity } from "../../actions/cart";
+import { cartDeleteItem, setQuantity } from "../../actions/cart";
 import Image from 'next/image'
 
 
@@ -26,10 +26,15 @@ export default function ProductResume({ product }) {
 
     return (
         <div className="products__item">
+            <span
+                onClick={() => dispatch(cartDeleteItem(_id))}
+                className="delete"> &times;
+            </span>
             <div className="image">
                 <Image alt={name} src={'https://prettyprieto.com' + img} layout='fill' className='img' ></Image>
             </div>
             <div className="info">
+
                 <h3>{name}</h3>
                 <p> <strong>${price.toLocaleString()}</strong>  &times; {quantity} </p>
                 <div className="counter">
