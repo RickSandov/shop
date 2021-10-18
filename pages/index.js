@@ -8,14 +8,19 @@ export async function getStaticProps() {
 
   return {
     props: {
-      products: data.products
+      products: data.products,
+      test: data.products.filter(({ category }) => category === 'test')
     }
   }
 }
 
-export default function Home({ products }) {
+export default function Home({ products, test }) {
 
-  const dispProducts = [products[0], products[3], products[4], products[5]];
+  const dispProducts = [products[0], products[3], products[4]];
+
+  console.log(products);
+
+  console.log(test);
 
   return (
     <>
@@ -34,6 +39,11 @@ export default function Home({ products }) {
             dispProducts.map(product => (
               <DisplayProduct key={product._id} product={product} />
             ))
+          }
+          {
+            test[0] && (
+              <DisplayProduct key={test[0]._id} product={test[0]} />
+            )
           }
         </div>
 
