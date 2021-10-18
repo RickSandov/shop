@@ -17,14 +17,25 @@
         display: flex;
         justify-content: space-evenly;
 
+        @include respond(phone) {
+            flex-direction: column;
+        }
+
         &--second {
             margin-top: 2rem;
+            text-align: center;
         }
     }
 
     &__col {
         padding: 0 2rem;
         flex: 1;
+
+        &:last-of-type {
+            @include respond(phone) {
+                margin-top: 5rem;
+            }
+        }
     }
 
     &__link {
