@@ -39,7 +39,7 @@ export default function Product({ product }) {
             <div className="product">
 
                 <div className="product__img-box">
-                    <Image alt={name} src={'https://prettyprieto.com' + imgs[0]} layout='fill' className='img' priority ></Image>
+                    <Image alt={name} src={`https://prettyprieto.com${imgs[0]}`} layout='fill' className='img' priority ></Image>
                 </div>
 
                 <div className="product__info">
