@@ -5,7 +5,7 @@ import ProductResume from "./ProductResume";
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js';
 
-const stripePromise = loadStripe('pk_test_51Jl3XdFs0d77yk73d5drIT12Q86N6QgFw8kg03UXXPObtASJBinrBR2PS9V6FKXAPCmfWW0LPcuj7UIouSqyIjDo00DKuUQsTu');
+const stripePromise = loadStripe('pk_live_51JlloVAd9gcNukk0Y5Hz4jh0nEUtUunHbRj1kS9cTLjBF8l5o1LE7Sps1FGa7KQdk6qf9J3ejZspVMhRyclqrtTI00iFRWvuBV');
 
 export default function Cart() {
 
