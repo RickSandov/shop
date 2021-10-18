@@ -45,6 +45,7 @@ export const cartReducer = (state = [
 
             stateCopy.splice(index, 1);
 
+            window.localStorage.setItem('cart', JSON.stringify(stateCopy))
             return [...stateCopy]
 
         default:
