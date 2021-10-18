@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 import ClientInfo from "./ClientInfo";
 import ProductResume from "./ProductResume";
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js';
+
+const stripePromise = loadStripe('pk_test_51Jl3XdFs0d77yk73d5drIT12Q86N6QgFw8kg03UXXPObtASJBinrBR2PS9V6FKXAPCmfWW0LPcuj7UIouSqyIjDo00DKuUQsTu');
 
 export default function Cart() {
 
@@ -64,7 +68,10 @@ export default function Cart() {
                                     </p>
                                 </div>
                             </div>
-                            <ClientInfo />
+                            <Elements stripe={stripePromise} >
+                                <ClientInfo />
+                            </Elements>
+
 
                         </div>
                     )
