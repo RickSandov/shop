@@ -42,6 +42,7 @@
 
         @include respond(phone) {
             flex: 0 1 60%;
+            margin-top: 3rem;
         }
 
         & .bottom {

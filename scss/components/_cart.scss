@@ -46,6 +46,7 @@
     @include respond(tab-port) {
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         margin-top: 6rem;
     }
 
@@ -208,6 +209,7 @@
 
     @include respond(tab-port) {
         margin-top: 5rem;
+        width: 100%;
     }
 
     & h3 {
