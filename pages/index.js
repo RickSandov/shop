@@ -16,7 +16,7 @@ export async function getStaticProps() {
 
 export default function Home({ products, test }) {
 
-  const dispProducts = [products[0], products[3], products[4]];
+  const dispProducts = products.filter((p, index) => index < 4);
 
   console.log(products);
 
@@ -41,9 +41,9 @@ export default function Home({ products, test }) {
             ))
           }
           {
-            test[0] && (
-              <DisplayProduct key={test[0]._id} product={test[0]} />
-            )
+            // test[0] && (
+            //   <DisplayProduct key={test[0]._id} product={test[0]} />
+            // )
           }
         </div>
 
