@@ -3,7 +3,7 @@ import { useForm } from "../../hooks/useForm"
 import Checkout from '../stripe/Checkout'
 
 
-export default function ClientInfo() {
+export default function ClientInfo({ shipment }) {
 
     const [formValues, handleInputChange] = useForm({
         street: '',
@@ -113,7 +113,7 @@ export default function ClientInfo() {
                         />
                     </div>
                 </div>
-                <Checkout formValues={formValues} setLoading={setLoading} />
+                <Checkout shipment={shipment} formValues={formValues} setLoading={setLoading} />
             </div>
         </div>
     )

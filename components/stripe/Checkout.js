@@ -46,7 +46,8 @@ export default function Checkout({ formValues, shipment, setLoading }) {
                 })),
                 payment: {
                     method: 'tarjeta',
-                    shipment: shipment || 120
+                    // shipment: shipment || 120,
+                    shipment: true
                 },
                 methodId: id
             }

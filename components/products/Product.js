@@ -29,8 +29,6 @@ export default function Product({ product }) {
         dispatch(cartAddItem(item));
         dispatch(uiTempToast('El producto se ha agregado a la bolsa'));
 
-        console.log(item);
-
     }
 
     return (

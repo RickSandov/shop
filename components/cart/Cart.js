@@ -69,7 +69,7 @@ export default function Cart() {
                                 </div>
                             </div>
                             <Elements stripe={stripePromise} >
-                                <ClientInfo />
+                                <ClientInfo shipment={total > 1000} />
                             </Elements>
 
 
