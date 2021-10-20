@@ -24,11 +24,6 @@ export default function Home({ products, test }) {
 
   return (
     <>
-      <Head>
-        <script
-          type='text/javascript'
-          src='https://pay.conekta.com/v1.0/js/conekta-checkout.min.js'></script>
-      </Head>
       <div className='container'>
         <Hero src='/img/halloween.png' />
         <h2

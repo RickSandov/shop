@@ -20,10 +20,12 @@ export default function Checkout({ formValues, shipment, setLoading }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const key = 'key_Y4fSx3ztSKgiQFVCDWB2hdg';
+    // const key = 'key_Aryho89vKyrSk7vzhCi9qxg'; // desarrollo
     ConektaCheckoutComponents.iFrame({
-      publicKey: 'key_Aryho89vKyrSk7vzhCi9qxg',
+      publicKey: key,
       options: {
-        hidePayButton: false,
+        hidePayButton: true,
       },
       styles: {
         color: '#FF0000',
@@ -33,152 +35,89 @@ export default function Checkout({ formValues, shipment, setLoading }) {
     });
   }, []);
 
-  const getToken = card => {
-    console.log(card);
-    console.log(ConektaCheckoutComponents);
-
-    // conekta.api_key = 'key_eYvWV7gSDkNYXsmr'; //  <-- Mock private key, please use YOUR personal private key
-    // conekta.api_version = '2.0.0';
-
-    // let customer = conekta.Customer.create({
-    //     name: "Payment Link Name",
-    //     email: "juan.perez@conekta.com"
-    // }, function (err, res) {
-    //     if (err) {
-    //         console.log(err);
-    //         return;
-    //     }
-    //     console.log(res.toObject());
-    // });
-
-    // return new Promise(async (resolve, reject) => {
-    //     try {
-
-    //         const tokenRes = await fetch('https://api.conekta.io/tokens', {
-    //             method: 'POST',
-    //             body: {
-    //                 checkout: { returns_control_on: "Token" }
-    //             },
-    //             headers: {
-    //                 Accept: 'application/vnd.conekta-v2.0.0+json',
-    //                 'Content-Type': 'application/json',
-    //                 Authorization: 'Basic a2V5X0FyeWhvODl2S3lyU2s3dnpoQ2k5cXhn=='
-    //             }
-    //         });
-
-    //         const token = await tokenRes.json();
-
-    //         console.log(tokenRes);
-
-    //         resolve(token);
-
-    //     } catch (err) {
-    //         reject(err);
-    //     }
-    // })
-  };
-
-  const tokenizeCard = () => {
-    getToken(cardValues);
-    // .then(data => {
-    //     console.log(data);
-    // })
-    // .catch(err => console.log(err))
-  };
-
   const handleSubmit = async e => {
     e.preventDefault();
 
-    // setLoading(true);
+    setLoading(true);
 
-    const key = 'key_Aryho89vKyrSk7vzhCi9qxg';
+    let tokenPromise;
 
-    const tokenPromise = window.ConektaCheckoutComponents.createToken();
-    tokenPromise
-      .then(function (token) {
-        console.log('Token created: ' + token);
-      })
-      .catch(function (error) {
-        console.log(error.message_to_purchaser);
+    try {
+
+      tokenPromise = await window.ConektaCheckoutComponents.createToken();
+
+    } catch (err) {
+      dispatch(uiTempToast(err.message_to_purchaser, true));
+    }
+
+    setLoading(false);
+
+    if (tokenPromise) {
+
+      const { id } = tokenPromise;
+
+      const { name, phoneNum, street, col, zip, extNumber, intNumber } = formValues;
+
+      const data = {
+        customer: {
+          name,
+          phoneNum
+        },
+        address: {
+          street,
+          col,
+          zip,
+          extNumber
+        },
+        items: cart.map(({ product, qty }) => ({
+          product,
+          qty
+        })),
+        payment: {
+          method: 'tarjeta',
+          // shipment: shipment || 120,
+          shipment: true,
+          token: id // aquí va el token
+        }
+      }
+
+      // console.log(data);
+
+      const response = await fetch('https://prettyprieto.com/api/private/sales/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
       });
 
-    // if (!error) {
-    //     const { id } = paymentMethod;
+      const res = await response.json();
 
-    //     const { name, phoneNum, street, col, zip, extNumber, intNumber } = formValues;
 
-    //     const data = {
-    //         customer: {
-    //             name,
-    //             phoneNum
-    //         },
-    //         address: {
-    //             street,
-    //             col,
-    //             zip,
-    //             extNumber
-    //         },
-    //         items: cart.map(({ product, qty }) => ({
-    //             product,
-    //             qty
-    //         })),
-    //         payment: {
-    //             method: 'tarjeta',
-    //             // shipment: shipment || 120,
-    //             shipment: true,
-    //             token: '' // aquí va el token
-    //         },
-    //         methodId: id
-    //     }
 
-    //     const response = await fetch('https://prettyprieto.com/api/private/sales/', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     });
+      if (res.status === 'OK') {
+        setLoading(false);
+        dispatch(uiTempToast('Pago realizado con éxito'));
+        dispatch(cartCreate());
+      } else {
+        dispatch(uiTempToast('Tu información debe estar completa', true));
+        console.log(res.error);
+      }
 
-    //     const res = await response.json();
+    }
 
-    //     console.log(res);
-
-    //     if (res.status === 'OK') {
-    //         setLoading(false);
-    //         dispatch(uiTempToast('Pago realizado con éxito'));
-    //         dispatch(cartCreate());
-    //     } else {
-    //         dispatch(uiTempToast('Revisa tu información', true));
-    //     }
-
-    // } else {
-    //     setLoading(false);
-    //     dispatch(uiTempToast('Hubo un error con tu método de pago', true));
-    //     console.log(error.message);
-    // }
   };
 
   return (
     <form className='checkout' onSubmit={handleSubmit}>
       <h3>Información de pago</h3>
 
-      {/* <CardForm cardValues={cardValues} handleInputChange={handleInputChange} /> */}
-
-      <h2>Merchant Payment</h2>
-      <p>Ingresa los datos de tu tarjeta de crédito</p>
       <div
         className='alert alert-success fade alert-token'
         id='alertToken'
         role='alert'></div>
       <div className='conekta-iframe-container'>
         <div id='conektaIframeContainer'></div>
-      </div>
-      <div className='d-flex flex-row-reverse'>
-        <div className='buttons text-left'>
-          <button id='messageButton' className='btn btn-primary'>
-            Pagar
-          </button>
-        </div>
       </div>
 
       <div className='btn'>

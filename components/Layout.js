@@ -30,7 +30,12 @@ export default function Layout({ children }) {
                 <title>Pretty Prieto</title>
                 <meta name="description" content="Pretty Prieto tienda de ropa en línea" />
                 <link rel="icon" href="/favicon.ico" />
+                {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+                <script
+                    type='text/javascript'
+                    src='https://pay.conekta.com/v1.0/js/conekta-checkout.min.js'></script>
             </Head>
+
             <Navbar />
             {children}
             <Footer />
