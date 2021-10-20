@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux"
 import ClientInfo from "./ClientInfo";
 import ProductResume from "./ProductResume";
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js';
-
-const stripePromise = loadStripe('pk_live_51JlloVAd9gcNukk0Y5Hz4jh0nEUtUunHbRj1kS9cTLjBF8l5o1LE7Sps1FGa7KQdk6qf9J3ejZspVMhRyclqrtTI00iFRWvuBV');
+import Script from 'next/script'
 
 export default function Cart() {
 
@@ -42,6 +39,7 @@ export default function Cart() {
                     :
                     (
                         <div className="carrito">
+                            <Script src="https://pay.conekta.com/v1.0/js/conekta-checkout.min.js" ></Script>
                             <div className="products">
                                 {
                                     cart.map((item) => (
@@ -68,9 +66,8 @@ export default function Cart() {
                                     </p>
                                 </div>
                             </div>
-                            <Elements stripe={stripePromise} >
-                                <ClientInfo shipment={total > 1000} />
-                            </Elements>
+                            <ClientInfo shipment={total > 1000} />
+
 
 
                         </div>

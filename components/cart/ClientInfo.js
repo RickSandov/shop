@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useForm } from "../../hooks/useForm"
-import Checkout from '../stripe/Checkout'
+import Checkout from '../payment/Checkout'
 
 
 export default function ClientInfo({ shipment }) {
