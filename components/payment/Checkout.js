@@ -101,7 +101,7 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         dispatch(cartCreate());
       } else {
         dispatch(uiTempToast('Revisa los datos ingresados', true));
-        res?.error && console.log(res.error);
+        res?.error?.details[0]?.message && uiTempToast(res?.error?.details[0]?.message, true);
       }
 
     }
