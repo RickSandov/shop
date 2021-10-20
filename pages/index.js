@@ -18,10 +18,6 @@ export async function getStaticProps() {
 export default function Home({ products, test }) {
   const dispProducts = products.filter((p, index) => index < 4);
 
-  console.log(products);
-
-  console.log(test);
-
   return (
     <>
       <div className='container'>

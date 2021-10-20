@@ -20,7 +20,7 @@ export default function Checkout({ formValues, shipment, setLoading }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const key = 'key_Y4fSx3ztSKgiQFVCDWB2hdg';
+    const key = 'key_Y4fSx3ztSKgiQFVCDWB2hdg'; // producción
     // const key = 'key_Aryho89vKyrSk7vzhCi9qxg'; // desarrollo
     ConektaCheckoutComponents.iFrame({
       publicKey: key,
@@ -100,8 +100,7 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         dispatch(uiTempToast('Pago realizado con éxito'));
         dispatch(cartCreate());
       } else {
-        dispatch(uiTempToast('Tu información debe estar completa', true));
-        console.log(res.error);
+        dispatch(uiTempToast('Debes ingresar tu nombre', true));
       }
 
     }
