@@ -1,6 +1,7 @@
-import DisplayProduct from "../components/products/DisplayProduct";
-import Hero from "../components/ui/Hero";
-import Link from 'next/link'
+import Head from 'next/head';
+import DisplayProduct from '../components/products/DisplayProduct';
+import Hero from '../components/ui/Hero';
+import Link from 'next/link';
 
 export async function getStaticProps() {
   const res = await fetch('https://prettyprieto.com/api/public/products'); // obtener productos por categoría
@@ -9,13 +10,12 @@ export async function getStaticProps() {
   return {
     props: {
       products: data.products,
-      test: data.products.filter(({ category }) => category === 'test')
-    }
-  }
+      test: data.products.filter(({ category }) => category === 'test'),
+    },
+  };
 }
 
 export default function Home({ products, test }) {
-
   const dispProducts = products.filter((p, index) => index < 4);
 
   console.log(products);
@@ -24,22 +24,26 @@ export default function Home({ products, test }) {
 
   return (
     <>
-      <div className="container">
+      <Head>
+        <script
+          type='text/javascript'
+          src='https://pay.conekta.com/v1.0/js/conekta-checkout.min.js'></script>
+      </Head>
+      <div className='container'>
         <Hero src='/img/halloween.png' />
         <h2
           style={{
             marginBottom: '3rem',
             marginTop: '3rem',
             fontSize: '3rem',
-            color: '#006fc3'
-          }}
-        >Productos Destacados</h2>
-        <div className="products-list">
-          {
-            dispProducts.map(product => (
-              <DisplayProduct key={product._id} product={product} />
-            ))
-          }
+            color: '#006fc3',
+          }}>
+          Productos Destacados
+        </h2>
+        <div className='products-list'>
+          {dispProducts.map(product => (
+            <DisplayProduct key={product._id} product={product} />
+          ))}
           {
             // test[0] && (
             //   <DisplayProduct key={test[0]._id} product={test[0]} />
@@ -47,13 +51,12 @@ export default function Home({ products, test }) {
           }
         </div>
 
-        <Link href="/Playeras" >
-          <a className="btn" >Ver más</a>
+        <Link href='/Playeras'>
+          <a className='btn'>Ver más</a>
         </Link>
 
         <Hero src='/img/octubre.png' />
       </div>
-
     </>
-  )
+  );
 }
