@@ -10,13 +10,6 @@ import CardForm from './CardForm';
 export default function Checkout({ formValues, shipment, setLoading }) {
   const { cart } = useSelector(state => state);
 
-  const [cardValues, handleInputChange] = useForm({
-    exp: '0525',
-    cvc: '135',
-    name: 'John Doe',
-    number: '4242424242424242',
-  });
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,6 +33,26 @@ export default function Checkout({ formValues, shipment, setLoading }) {
 
     setLoading(true);
 
+    const { name, phone, street, col, zip, extNumber, intNumber, mail } = formValues;
+
+    if (name.lenght === 0) {
+      uiTempToast('Debe ingresar un nombre', true);
+      setLoading(true);
+      return;
+    }
+
+    if (phone.lenght === 0) {
+      uiTempToast('Debe ingresar un número de contácto', true);
+      setLoading(true);
+      return;
+    }
+
+    if (mail.lenght === 0) {
+      uiTempToast('Debe ingresar un correo electrónico', true);
+      setLoading(true);
+      return;
+    }
+
     let tokenPromise;
 
     try {
@@ -56,12 +69,11 @@ export default function Checkout({ formValues, shipment, setLoading }) {
 
       const { id } = tokenPromise;
 
-      const { name, phoneNum, street, col, zip, extNumber, intNumber } = formValues;
-
       const data = {
         customer: {
           name,
-          phoneNum
+          phone,
+          email: mail
         },
         address: {
           street,

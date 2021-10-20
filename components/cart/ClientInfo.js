@@ -13,10 +13,11 @@ export default function ClientInfo({ shipment }) {
         intNumber: '',
         refs: '',
         name: '',
-        phoneNum: ''
+        phone: '',
+        mail: ''
     })
 
-    const { street, col, zip, extNumber, intNumber, refs, name, phoneNum } = formValues;
+    const { street, col, zip, extNumber, intNumber, refs, name, phone, mail } = formValues;
 
     const [loading, setLoading] = useState(false);
 
@@ -40,14 +41,26 @@ export default function ClientInfo({ shipment }) {
                     />
                 </div>
                 <div className="form__item">
-                    <label htmlFor="phoneNum">
+                    <label htmlFor="phone">
                         Número de contácto
                     </label>
                     <input
-                        id="phoneNum"
+                        id="phone"
                         type="number"
-                        name="phoneNum"
-                        value={phoneNum}
+                        name="phone"
+                        value={phone}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className="form__item">
+                    <label htmlFor="mail">
+                        Correo electrónico
+                    </label>
+                    <input
+                        id="mail"
+                        type="email"
+                        name="mail"
+                        value={mail}
                         onChange={handleInputChange}
                     />
                 </div>
