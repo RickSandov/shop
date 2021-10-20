@@ -100,7 +100,8 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         dispatch(uiTempToast('Pago realizado con éxito'));
         dispatch(cartCreate());
       } else {
-        dispatch(uiTempToast('Debes ingresar tu nombre', true));
+        dispatch(uiTempToast('Revisa los datos ingresados', true));
+        res?.error && console.log(res.error);
       }
 
     }
