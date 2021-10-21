@@ -18,11 +18,11 @@ export default function Footer(params) {
                                 Mi carrito
                             </a>
                         </Link>
-                        {/* <Link href='/faqs' >
+                        <Link href='/ver-pedido' >
                             <a className='footer__link' >
-                                Preguntas frequentes
+                                Ver mi pedido
                             </a>
-                        </Link> */}
+                        </Link>
                         <Link href='/privacidad' >
                             <a className='footer__link' >
                                 Politica de Privacidad

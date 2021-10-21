@@ -2,10 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { cartCreate } from '../../actions/cart';
-import { uiTempToast } from '../../actions/ui';
-import { useForm } from '../../hooks/useForm';
-import CardForm from './CardForm';
-// import conekta from 'https://pay.conekta.com/v1.0/js/conekta-checkout.min.js';
+import { uiActiveModal, uiTempToast } from '../../actions/ui';
 
 export default function Checkout({ formValues, shipment, setLoading }) {
   const { cart } = useSelector(state => state);
@@ -87,8 +84,8 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         })),
         payment: {
           method: 'tarjeta',
-          // shipment: shipment || 120,
-          shipment: true,
+          shipment: shipment || 120,
+          // shipment: true,
           token: id // aquí va el token
         }
       }
@@ -111,6 +108,7 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         setLoading(false);
         dispatch(uiTempToast('Pago realizado con éxito'));
         dispatch(cartCreate());
+        dispatch(uiActiveModal(res.sale?._id));
       } else {
         // dispatch(uiTempToast('Revisa los datos ingresados', true));
         res?.error?.details[0]?.message ? dispatch(uiTempToast(res?.error?.details[0]?.message, true)) : dispatch(uiTempToast('Revisa los datos ingresados', true));

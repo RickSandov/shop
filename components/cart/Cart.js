@@ -29,7 +29,6 @@ export default function Cart() {
         </div>
       ) : (
         <div className='carrito'>
-          {/* <Script src='https://pay.conekta.com/v2.0/js/conekta-checkout.min.js'></Script> */}
           <div className='products'>
             {cart.map(item => (
               <ProductResume key={item.product} product={item} />

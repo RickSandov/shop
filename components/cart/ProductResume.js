@@ -4,7 +4,7 @@ import { cartDeleteItem, setQuantity } from "../../actions/cart";
 import Image from 'next/image'
 
 
-export default function ProductResume({ product }) {
+export default function ProductResume({ product, seeOrder }) {
 
     const dispatch = useDispatch();
 
@@ -26,27 +26,37 @@ export default function ProductResume({ product }) {
 
     return (
         <div className="products__item">
-            <span
-                onClick={() => dispatch(cartDeleteItem(_id))}
-                className="delete"> &times;
-            </span>
-            <div className="image">
-                <Image alt={name} src={'https://prettyprieto.com' + img} layout='fill' className='img' ></Image>
-            </div>
+            {
+                !seeOrder && (
+                    <>
+                        <span
+                            onClick={() => dispatch(cartDeleteItem(_id))}
+                            className="delete"> &times;
+                        </span>
+                        <div className="image">
+                            <Image alt={name} src={'https://prettyprieto.com' + img} layout='fill' className='img' ></Image>
+                        </div></>
+                )
+            }
+
             <div className="info">
 
                 <h3>{name}</h3>
                 <p> <strong>${price.toLocaleString()}</strong>  &times; {quantity} </p>
-                <div className="counter">
-                    <button
-                        onClick={decrease}
-                        disabled={quantity <= 1}
-                    > - </button>
-                    <span className="qty"> {quantity} </span>
-                    <button
-                        onClick={increaseQty}
-                    > + </button>
-                </div>
+                {
+                    !seeOrder && (
+                        <div className="counter">
+                            <button
+                                onClick={decrease}
+                                disabled={quantity <= 1}
+                            > - </button>
+                            <span className="qty"> {quantity} </span>
+                            <button
+                                onClick={increaseQty}
+                            > + </button>
+                        </div>
+                    )
+                }
             </div>
             <div className="total">
                 <span>Total:</span>

@@ -5,6 +5,7 @@ import Checkout from '../payment/Checkout'
 
 export default function ClientInfo({ shipment }) {
 
+    const [loading, setLoading] = useState(false);
     const [formValues, handleInputChange] = useForm({
         street: '',
         col: '',
@@ -17,9 +18,9 @@ export default function ClientInfo({ shipment }) {
         mail: ''
     })
 
-    const { street, col, zip, extNumber, intNumber, refs, name, phone, mail } = formValues;
 
-    const [loading, setLoading] = useState(false);
+
+    const { street, col, zip, extNumber, intNumber, refs, name, phone, mail } = formValues;
 
     return (
         <div className="client-info">

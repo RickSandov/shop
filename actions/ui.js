@@ -19,3 +19,12 @@ export const uiTempToast = (msg, err) => {
         }, 4000);
     }
 }
+
+export const uiActiveModal = (orderId) => ({
+    type: types.uiActiveModal,
+    payload: { orderId }
+})
+
+export const uiCloseModal = () => ({
+    type: types.uiCloseModal
+})

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import DisplayCart from './cart/DisplayCart';
 import ActiveLink from './ActiveLink';
 
-export default function Navbar({ categories = ['Playeras', 'Sudaderas', 'Chamarras', 'Camisetas'] }) {
+export default function Navbar({ categories = ['Playeras', 'Sudaderas', 'Camisetas'] }) {
 
     return (
         <nav className='navbar' >

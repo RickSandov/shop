@@ -2,6 +2,7 @@ import Head from 'next/head';
 import DisplayProduct from '../components/products/DisplayProduct';
 import Hero from '../components/ui/Hero';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export async function getStaticProps() {
   const res = await fetch('https://prettyprieto.com/api/public/products'); // obtener productos por categoría
@@ -18,10 +19,20 @@ export async function getStaticProps() {
 export default function Home({ products, test }) {
   const dispProducts = products.filter((p, index) => index < 4);
 
+  useEffect(() => {
+
+    fetch('https://prettyprieto.com/api/private/sales')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+
+  }, [])
+
   return (
     <>
       <div className='container'>
-        <Hero src='/img/halloween.png' />
+        <Hero src='/img/elprieto.webp' alt={'Identidad de marca'} />
         <h2
           style={{
             marginBottom: '3rem',
@@ -46,7 +57,7 @@ export default function Home({ products, test }) {
           <a className='btn'>Ver más</a>
         </Link>
 
-        <Hero src='/img/octubre.png' />
+        <Hero src='/img/elprieto1.webp' alt={'Ofertas pretty prieto'} />
       </div>
     </>
   );

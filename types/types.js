@@ -10,6 +10,9 @@ export const types = {
     uiActiveToast: '[UI] ActiveToast',
     uiStopToast: '[UI] StopToast',
 
+    uiActiveModal: '[UI] ActiveModal',
+    uiCloseModal: '[UI] CloseModal',
+
     stripeSetPromise: '[Stripe] SetPromise'
 
 }

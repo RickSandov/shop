@@ -1,10 +1,10 @@
 
 import Image from 'next/image';
 
-export default function Hero({ src }) {
+export default function Hero({ src, alt }) {
     return (
         <div className="hero">
-            <Image alt={'halloween banner'} src={src} layout='fill' objectFit className='img'></Image>
+            <Image alt={alt} src={src} layout='fill' objectFit className='img' priority ></Image>
         </div>
 
     )

@@ -4,7 +4,10 @@ import { types } from "../types/types";
 const initialState = {
     toastActive: false,
     toastMsg: 'El producto se ha agregado a la bolsa',
-    toastErr: false
+    toastErr: false,
+    modalActive: false,
+    orderId: 'ord_7895642'
+
 }
 
 export const uiReducer = (state = initialState, action) => {
@@ -14,6 +17,7 @@ export const uiReducer = (state = initialState, action) => {
         case types.uiActiveToast:
 
             return {
+                ...state,
                 toastActive: true,
                 toastMsg: action.payload.msg ? action.payload.msg : state.toastMsg,
                 toastErr: action.payload.err ? action.payload.err : false
@@ -25,6 +29,22 @@ export const uiReducer = (state = initialState, action) => {
                 ...state,
                 toastActive: false,
                 toastErr: false
+            }
+
+        case types.uiActiveModal:
+
+            return {
+                ...state,
+                modalActive: true,
+                orderId: action.payload.orderId
+            }
+
+        case types.uiCloseModal:
+
+            return {
+                ...state,
+                modalActive: false,
+                orderId: ''
             }
 
 

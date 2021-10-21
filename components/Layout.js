@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { cartCreate, updateCart } from "../actions/cart";
 import Toast from "./ui/Toast";
+import OrderModal from "./orders/OrderModal";
 
 export default function Layout({ children }) {
 
@@ -42,6 +43,11 @@ export default function Layout({ children }) {
             {
                 ui.toastActive && (
                     <Toast />
+                )
+            }
+            {
+                ui.modalActive && (
+                    <OrderModal orderId={ui.orderId} />
                 )
             }
         </>
