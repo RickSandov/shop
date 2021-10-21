@@ -108,7 +108,7 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         setLoading(false);
         dispatch(uiTempToast('Pago realizado con éxito'));
         dispatch(cartCreate());
-        dispatch(uiActiveModal(res.sale?._id));
+        res.sale?._id && dispatch(uiActiveModal(res.sale?._id));
       } else {
         // dispatch(uiTempToast('Revisa los datos ingresados', true));
         res?.error?.details[0]?.message ? dispatch(uiTempToast(res?.error?.details[0]?.message, true)) : dispatch(uiTempToast('Revisa los datos ingresados', true));
