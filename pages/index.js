@@ -15,7 +15,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ products, test }) {
+export default function Home({ products }) {
   const dispProducts = products.filter((p, index) => index < 4);
 
   return (
