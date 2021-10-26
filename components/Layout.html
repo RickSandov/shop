@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Testing</title>
+</head>
+
+<body>
+    <!-- Include the PayPal JavaScript SDK; replace "test" with your own sandbox Business account app client ID -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD"></script>
+
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
+
+    <script>
+        paypal.Buttons({
+            // Style settings
+            style: {
+                color: 'blue',
+                shape: 'pill',
+                label: 'pay',
+                height: 40
+            },
+
+            // Sets up the transaction when a payment button is clicked
+            /*createOrder: function(data, actions) {
+              return actions.order.create({
+                purchase_units: [{
+                  amount: {
+                    value: '77.44' // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+                  }
+                }]
+              });
+            },*/
+            createOrder: (data, actions) => {
+                console.log('CREATE', data);
+
+                return fetch('http://localhost:3000/api/public/paypal/order', {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        "customer": {
+                            "name": "Jairo Rangel",
+                            "phoneNum": "6183188452"
+                        },
+                        "address": {
+                            "street": "Rio Nazas",
+                            "col": "Valle del Sur",
+                            "zip": "34120",
+                            "extNumber": "213",
+                            "intNumber": null,
+                            "refs": null
+                        },
+                        "items": [
+                            {
+                                "product": "616c68f36d0d4a978f35147a",
+                                "qty": 12
+                            }
+                        ],
+                        "payment": {
+                            "shipment": 0
+                        }
+                    })
+                }).then(res => {
+                    return res.json();
+                }).then(({ order }) => {
+                    console.log(order)
+
+                    return order.id;
+                }).catch(err => {
+                    console.log(err);
+                    alert('Ocurrio un error!!');
+                })
+            },
+
+            // Finalize the transaction after payer approval
+            /*onApprove: function(data, actions) {
+              return actions.order.capture().then(function(orderData) {
+                // Successful capture! For dev/demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+    
+                // When ready to go live, remove the alert and show a success message within this page. For example:
+                // var element = document.getElementById('paypal-button-container');
+                // element.innerHTML = '';
+                // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                // Or go to another URL:  actions.redirect('thank_you.html');
+              });
+            }*/
+            onApprove: (data, actions) => {
+                console.log('APPROVE', data);
+
+                return fetch(`http://localhost:3000/api/public/paypal/order/${data.orderID}/capture`, {
+                    method: 'post'
+                }).then(res => {
+                    return res.json();
+                }).then(({ order }) => {
+                    // Three cases to handle:
+                    //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
+                    //   (2) Other non-recoverable errors -> Show a failure message
+                    //   (3) Successful transaction -> Show confirmation or thank you
+
+                    // This example reads a v2/checkout/orders capture response, propagated from the server
+                    // You could use a different API or structure for your 'orderData'
+                    var errorDetail = Array.isArray(order.details) && order.details[0];
+
+                    if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
+                        return actions.restart(); // Recoverable state, per:
+                        // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
+                    }
+
+                    if (errorDetail) {
+                        var msg = 'Sorry, your transaction could not be processed.';
+                        if (errorDetail.description) msg += '\n\n' + errorDetail.description;
+                        if (order.debug_id) msg += ' (' + order.debug_id + ')';
+                        return alert(msg); // Show a failure message (try to avoid alerts in production environments)
+                    }
+
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', order, JSON.stringify(order, null, 2));
+                    var transaction = order.purchase_units[0].payments.captures[0];
+                    alert('Transaction ' + transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                })
+            }
+        }).render('#paypal-button-container');
+
+    </script>
+    </script>
+</body>
+
+</html>

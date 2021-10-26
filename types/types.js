@@ -13,6 +13,9 @@ export const types = {
     uiActiveModal: '[UI] ActiveModal',
     uiCloseModal: '[UI] CloseModal',
 
-    stripeSetPromise: '[Stripe] SetPromise'
+    authLogin: '[Auth] Login',
+    authLogout: '[Auth] Logout',
+    authUpdate: '[Auth] Update',
+    authSignUp: '[Auth] SignUp'
 
 }

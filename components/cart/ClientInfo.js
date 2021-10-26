@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useForm } from "../../hooks/useForm"
-import Checkout from '../payment/Checkout'
+import Paypal from "../payment/Paypal";
+import Script from 'next/script';
 
 
 export default function ClientInfo({ shipment }) {
@@ -17,8 +18,6 @@ export default function ClientInfo({ shipment }) {
         phone: '',
         mail: ''
     })
-
-
 
     const { street, col, zip, extNumber, intNumber, refs, name, phone, mail } = formValues;
 
@@ -127,7 +126,7 @@ export default function ClientInfo({ shipment }) {
                         />
                     </div>
                 </div>
-                <Checkout shipment={shipment} formValues={formValues} setLoading={setLoading} />
+                <Paypal shipment={shipment} formValues={formValues} setLoading={setLoading} />
             </div>
         </div>
     )

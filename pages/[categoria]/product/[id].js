@@ -43,7 +43,7 @@ export default function ProductPage({ product }) {
 
         <>
             <Head>
-                <title>{product.name}</title>
+                <title>{product.name} || Pretty Prieto</title>
                 <meta name="description" content={` ${product.description}`} />
                 <link rel="icon" href="/favicon.ico" />
             </Head>

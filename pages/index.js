@@ -2,6 +2,7 @@
 import DisplayProduct from '../components/products/DisplayProduct';
 import Hero from '../components/ui/Hero';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export async function getStaticProps() {
   const res = await fetch('https://prettyprieto.com/api/public/products'); // obtener productos por categoría
@@ -16,7 +17,30 @@ export async function getStaticProps() {
 }
 
 export default function Home({ products }) {
+
   const dispProducts = products.filter((p, index) => index < 4);
+
+  // useEffect(() => {
+
+  //   const getInfo = async () => {
+
+  //     const res = await fetch(`https://prettyprieto.com/api/private/sales`);
+  //     const data = await res.json()
+
+  //     let total = 0;
+
+  //     data.sales.forEach(({ payment }) => {
+  //       total += payment.total;
+  //     })
+
+  //     console.log(`Ingreso total: $${total.toLocaleString()}`);
+  //     console.log(data.sales);
+
+  //   }
+
+  //   getInfo()
+
+  // }, [])
 
   return (
     <>

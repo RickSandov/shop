@@ -12,7 +12,6 @@ export default function Footer(params) {
                                 Inicio
                             </a>
                         </Link>
-
                         <Link href='/carrito' >
                             <a className='footer__link' >
                                 Mi carrito
@@ -23,12 +22,32 @@ export default function Footer(params) {
                                 Ver mi pedido
                             </a>
                         </Link>
+                        <Link href='/contacto' >
+                            <a className='footer__link' >
+                                Contacto
+                            </a>
+                        </Link>
+                        <Link href='/medidas' >
+                            <a className='footer__link' >
+                                Medidas
+                            </a>
+                        </Link>
+                        <Link href='/devoluciones' >
+                            <a className='footer__link' >
+                                Devoluciones o cambios
+                            </a>
+                        </Link>
+                        <Link href='/preguntas-frecuentes' >
+                            <a className='footer__link' >
+                                Preguntas frecuentes
+                            </a>
+                        </Link>
                         <Link href='/privacidad' >
                             <a className='footer__link' >
                                 Politica de Privacidad
                             </a>
                         </Link>
-                        <Link href='/terminos' >
+                        <Link href='/terminos-y-condicines' >
                             <a className='footer__link' >
                                 Terminos y Condiciones
                             </a>

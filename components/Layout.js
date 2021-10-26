@@ -1,6 +1,7 @@
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Head from "next/head";
+import Script from 'next/script';
 import { useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -32,10 +33,12 @@ export default function Layout({ children }) {
                 <meta name="description" content="Pretty Prieto tienda de ropa en línea" />
                 <link rel="icon" href="/favicon.ico" />
                 {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-                <script
-                    type='text/javascript'
-                    src='https://pay.conekta.com/v1.0/js/conekta-checkout.min.js'></script>
+                {/* <script src="https://www.paypal.com/sdk/js?client-id=test"></script> */}
             </Head>
+            <Script
+                src="https://www.paypal.com/sdk/js?client-id=AQWb-KvlTaCQu6a8Jmndt1ORUWs5LY4Md1WqFc-1MVr2lrTOuWu3OGrUlfl-s8mZz1jsmGOs1cpi7I6O"
+                strategy="beforeInteractive"
+            />
 
             <Navbar />
             {children}
