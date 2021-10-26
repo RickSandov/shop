@@ -136,7 +136,7 @@ export default function Paypal({ formValues, shipment, setLoading }) {
                         createOrder={(data, actions) => {
                             const { name, phone, street, col, zip, extNumber, intNumber, mail } = formValues;
 
-                            return fetch('http://localhost:3000/api/public/paypal/order', {
+                            return fetch('https://prettyprieto.com/api/public/paypal/order', {
                                 method: 'post',
                                 headers: {
                                     'Content-Type': 'application/json',
@@ -177,7 +177,7 @@ export default function Paypal({ formValues, shipment, setLoading }) {
 
                         onApprove={(data, actions) => {
 
-                            return fetch(`http://localhost:3000/api/public/paypal/order/${data.orderID}/capture`, {
+                            return fetch(`https://prettyprieto.com/api/public/paypal/order/${data.orderID}/capture`, {
                                 method: 'post'
                             }).then(res => {
                                 return res.json();
@@ -208,7 +208,7 @@ export default function Paypal({ formValues, shipment, setLoading }) {
                             dispatch(uiTempToast('Pago realizado con éxito'));
                             console.log(details, data);
 
-                            return fetch(`http://localhost:3000/api/public/paypal/order/${data.orderID}/capture`, {
+                            return fetch(`https://prettyprieto.com/api/public/paypal/order/${data.orderID}/capture`, {
                                 method: 'post',
                                 headers: {
                                     'Content-Type': 'application/json',
