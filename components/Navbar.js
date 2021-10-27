@@ -16,8 +16,8 @@ export default function Navbar({ categories = ['Playeras', 'Sudaderas', 'Origina
 
                     <Link href={'/'} >
                         <a className='logo' >
-                            <Image src="/img/logo1.png" alt="Vercel Logo" width={72} height={72} priority />
-                            <h1>Pretty Prieto MX</h1>
+                            <Image src="/img/logotry1.png" alt="Vercel Logo" width={200} height={180} priority />
+                            {/* <h1>Pretty Prieto MX</h1> */}
                         </a>
                     </Link>
 
