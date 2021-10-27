@@ -86,39 +86,39 @@ export default function Paypal({ formValues, shipment, setLoading }) {
                         }}
 
 
-                    // onSuccess={async (details, data) => {
+                        // onSuccess={async (details, data) => {
 
-                    // console.log(details, data);
-                    // dispatch(uiTempToast('Pago realizado con éxito'));
-                    // dispatch(cartCreate());
-                    // data?.orderID && dispatch(uiActiveModal(data?.orderID));
-                    // let orderID;
+                        // console.log(details, data);
+                        // dispatch(uiTempToast('Pago realizado con éxito'));
+                        // dispatch(cartCreate());
+                        // data?.orderID && dispatch(uiActiveModal(data?.orderID));
+                        // let orderID;
 
-                    // try {
+                        // try {
 
-                    //     const res = await fetch(`https://prettyprieto.com/api/public/paypal/order/${data.orderID}/capture`, {
-                    //         method: 'post',
-                    //         headers: {
-                    //             'Content-Type': 'application/json',
-                    //         }
-                    //     })
-                    //     const order = await res.json();
-                    //     orderID = order?.id;
-                    //     console.log(orderID, order, res);
+                        //     const res = await fetch(`https://prettyprieto.com/api/public/paypal/order/${data.orderID}/capture`, {
+                        //         method: 'post',
+                        //         headers: {
+                        //             'Content-Type': 'application/json',
+                        //         }
+                        //     })
+                        //     const order = await res.json();
+                        //     orderID = order?.id;
+                        //     console.log(orderID, order, res);
 
-                    // } catch (err) {
+                        // } catch (err) {
 
-                    //     console.log(err);
-                    //     dispatch(uiTempToast('Ocurrió un error con tu pago', true))
+                        //     console.log(err);
+                        //     dispatch(uiTempToast('Ocurrió un error con tu pago', true))
 
-                    // }
+                        // }
 
-                    //     return orderID
-                    // }}
-                    // catchError={(err) => {
-                    //     console.log(err);
-                    //     dispatch(uiTempToast('Ocurrió un error con tu método de pago', true))
-                    // }}
+                        //     return orderID
+                        // }}
+                        catchError={(err) => {
+                            console.log(err);
+                            dispatch(uiTempToast('Ocurrió un error con tu método de pago', true))
+                        }}
                     />
                 )
             }
