@@ -36,7 +36,7 @@ export default function Layout({ children }) {
                 {/* <script src="https://www.paypal.com/sdk/js?client-id=test"></script> */}
             </Head>
             <Script
-                src="https://www.paypal.com/sdk/js?client-id=AQWb-KvlTaCQu6a8Jmndt1ORUWs5LY4Md1WqFc-1MVr2lrTOuWu3OGrUlfl-s8mZz1jsmGOs1cpi7I6O"
+                src="https://www.paypal.com/sdk/js?client-id=AaLHeBWsQYKa3NylyCSLBNpv7hZKrkn0-nqISJSKaIQc3y4ZJCmhz1E_Jn3vcIJtgev3WA3Dg6TIkTfF"
                 strategy="beforeInteractive"
             />
 
