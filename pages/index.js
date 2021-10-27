@@ -59,11 +59,6 @@ export default function Home({ products }) {
           {dispProducts.map(product => (
             <DisplayProduct key={product._id} product={product} />
           ))}
-          {
-            // test[0] && (
-            //   <DisplayProduct key={test[0]._id} product={test[0]} />
-            // )
-          }
         </div>
 
         <Link href='/Playeras'>
