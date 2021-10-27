@@ -36,6 +36,7 @@ export default function Paypal({ formValues, shipment, setLoading }) {
             {
                 window.paypal && (
                     <PayPalButton
+                        currency={'MXN'}
                         amount={amount}
                         createOrder={(data, actions) => {
                             const { name, phone, street, col, zip, extNumber, intNumber, mail } = formValues;
@@ -63,7 +64,7 @@ export default function Paypal({ formValues, shipment, setLoading }) {
                                         qty
                                     })),
                                     payment: {
-                                        shipment: shipment || 120
+                                        shipment: 0
                                     }
                                 })
                             }).then(res => {
