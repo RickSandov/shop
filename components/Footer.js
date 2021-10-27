@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Newsletter from './newsletter/Newsletter';
 
 export default function Footer(params) {
     return (
@@ -52,6 +53,7 @@ export default function Footer(params) {
                                 Terminos y Condiciones
                             </a>
                         </Link>
+                        <Newsletter />
                     </div>
                     <div className='footer__col'>
                         <h3 className='footer__heading center'>¡Estamos creciendo!</h3>
@@ -63,10 +65,29 @@ export default function Footer(params) {
                             ¡Agrega nuestra página a marcadores para que puedas entrar y
                             comprar tus prendas favoritas en cualquier momento!
                         </p>
+                        <h3 className='footer__heading center'>Redes sociales</h3>
+                        <div className="social-media">
+                            <Link href='https://www.facebook.com/P-R-E-T-T-Y-P-R-I-E-T-O-111959643521979'>
+                                <a target='_blank' className="footer__icon">
+                                    <svg>
+                                        <use href="/icons/fb.svg#fb" ></use>
+                                    </svg>
+                                </a>
+                            </Link>
+                            <Link href='https://www.instagram.com/pretty_prxeto/'>
+                                <a target='_blank' className="footer__icon">
+                                    <svg>
+                                        <use href="/icons/ig.svg#ig" ></use>
+                                    </svg>
+                                </a>
+                            </Link>
+                        </div>
+
                     </div>
                 </div>
                 <div className='footer__row footer__row--second'>
                     <p className='footer__sub'>© 2021 Pretty Prieto</p>
+
                 </div>
             </div>
         </footer>
