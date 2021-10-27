@@ -8,9 +8,9 @@ export default function OrderModal({ orderId }) {
 
     const copyNumber = (e) => {
         e.stopPropagation();
-        var copyText = document.getElementById("order-id");
+        let copyText = document.querySelector("#order-id");
 
-        navigator.clipboard.writeText(copyText.value);
+        navigator.clipboard.writeText(copyText.innerHTML);
 
         dispatch(uiTempToast('Número de orden copiado al portapapeles'));
     }
@@ -34,7 +34,7 @@ export default function OrderModal({ orderId }) {
                     </p>
                     <p
                         onClick={copyNumber}
-                        id='order-id'
+                        id="order-id"
                         className="order-id">
                         {orderId}
                     </p>

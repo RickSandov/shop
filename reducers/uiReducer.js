@@ -5,8 +5,8 @@ const initialState = {
     toastActive: false,
     toastMsg: 'El producto se ha agregado a la bolsa',
     toastErr: false,
-    modalActive: false,
-    orderId: 'ord_7895642'
+    modalActive: true,
+    orderId: '0kpJrBBM'
 
 }
 
