@@ -58,7 +58,7 @@ export default function Footer(params) {
                     <div className='footer__col'>
                         <h3 className='footer__heading center'>¡Estamos creciendo!</h3>
                         <p className='footer__paraph'>
-                            Estamos empezando este emprendimiento. Puedes esperar nueva
+                            Vamos comenzando con la tienda. Puedes esperar nueva
                             funcionalidad y un catalogo más grande en el futuro.
                         </p>
                         <p className='footer__paraph'>
