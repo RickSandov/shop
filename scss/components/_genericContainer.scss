@@ -50,4 +50,34 @@
         }
     }
 
+    & .images {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        & .image {
+            width: 50%;
+
+            @include respond(phone) {
+                width: 100%;
+            }
+
+            overflow: hidden;
+            margin-top: 4rem;
+
+
+            >div {
+                position: unset !important;
+            }
+
+            & .img {
+                object-fit: cover;
+                width: 100% !important;
+                position: relative !important;
+                height: unset !important;
+            }
+        }
+    }
+
 }
