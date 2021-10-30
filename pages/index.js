@@ -20,27 +20,29 @@ export default function Home({ products }) {
 
   const dispProducts = products.filter((p, index) => index < 4);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   const getInfo = async () => {
+    const getInfo = async () => {
 
-  //     const res = await fetch(`https://prettyprieto.com/api/private/sales`);
-  //     const data = await res.json()
+      const res = await fetch(`https://prettyprieto.com/api/private/sales`);
+      const data = await res.json()
 
-  //     let total = 0;
+      let total = 0;
 
-  //     data.sales.forEach(({ payment }) => {
-  //       total += payment.total;
-  //     })
+      data.sales.forEach(({ payment }, index) => {
+        if (index > 14) {
+          total += payment.total;
+        }
+      });
 
-  //     console.log(`Ingreso total: $${total.toLocaleString()}`);
-  //     console.log(data.sales);
+      console.log(`Ingreso total: $${total.toLocaleString()}`);
+      console.log(data.sales);
 
-  //   }
+    }
 
-  //   getInfo()
+    getInfo();
 
-  // }, [])
+  }, []);
 
   return (
     <>
