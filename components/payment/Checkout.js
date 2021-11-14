@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { cartCreate } from '../../actions/cart';
 import { uiActiveModal, uiTempToast } from '../../actions/ui';
+import Link from 'next/link';
 
 export default function Checkout({ formValues, shipment, setLoading }) {
   const { cart } = useSelector(state => state);
@@ -30,7 +31,8 @@ export default function Checkout({ formValues, shipment, setLoading }) {
 
     setLoading(true);
 
-    const { name, phone, street, col, zip, extNumber, intNumber, mail } = formValues;
+    const { name, phone, street, col, zip, extNumber, intNumber, mail } =
+      formValues;
 
     if (name.lenght === 0) {
       uiTempToast('Debe ingresar un nombre', true);
@@ -53,9 +55,7 @@ export default function Checkout({ formValues, shipment, setLoading }) {
     let tokenPromise;
 
     try {
-
       tokenPromise = await window.ConektaCheckoutComponents.createToken();
-
     } catch (err) {
       dispatch(uiTempToast(err.message_to_purchaser, true));
     }
@@ -63,46 +63,46 @@ export default function Checkout({ formValues, shipment, setLoading }) {
     setLoading(false);
 
     if (tokenPromise) {
-
       const { id } = tokenPromise;
 
       const data = {
         customer: {
           name,
           phone,
-          email: mail
+          email: mail,
         },
         address: {
           street,
           col,
           zip,
-          extNumber
+          extNumber,
         },
         items: cart.map(({ product, qty }) => ({
           product,
-          qty
+          qty,
         })),
         payment: {
           method: 'tarjeta',
           shipment: shipment || 120,
           // shipment: true,
-          token: id // aquí va el token
-        }
-      }
+          token: id, // aquí va el token
+        },
+      };
 
       // console.log(data);
 
-      const response = await fetch('https://prettyprieto.com/api/private/sales/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      });
+      const response = await fetch(
+        'https://prettyprieto.com/api/private/sales/',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       const res = await response.json();
-
-
 
       if (res.status === 'OK') {
         setLoading(false);
@@ -111,12 +111,12 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         res.sale?._id && dispatch(uiActiveModal(res.sale?._id));
       } else {
         // dispatch(uiTempToast('Revisa los datos ingresados', true));
-        res?.error?.details[0]?.message ? dispatch(uiTempToast(res?.error?.details[0]?.message, true)) : dispatch(uiTempToast('Revisa los datos ingresados', true));
+        res?.error?.details[0]?.message
+          ? dispatch(uiTempToast(res?.error?.details[0]?.message, true))
+          : dispatch(uiTempToast('Revisa los datos ingresados', true));
         console.log(res?.error);
       }
-
     }
-
   };
 
   return (
@@ -130,7 +130,13 @@ export default function Checkout({ formValues, shipment, setLoading }) {
       <div className='conekta-iframe-container'>
         <div id='conektaIframeContainer'></div>
       </div>
-
+      <input type='checkbox' required='true' name='agree' />
+      <label htmlFor='agree'>
+        Acepto los{' '}
+        <Link href='/terminos-y-condiciones'>
+          <a>Terminos y Condiciones.</a>
+        </Link>
+      </label>
       <div className='btn'>
         <button>pagar</button>
       </div>
