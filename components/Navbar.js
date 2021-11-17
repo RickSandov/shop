@@ -9,7 +9,7 @@ export default function Navbar({ categories = ['Playeras', 'Sudaderas', 'Origina
     return (
         <nav className='navbar' >
             <div className="ad">
-                <p>Envío gratis en pedidos superiores a MXN$1,000.00</p>
+                <p>Envío gratis en pedidos superiores a USD$50.00</p>
             </div>
             <div className="navbar__top">
                 <div className="logo-box">

@@ -16,7 +16,7 @@ export default function DisplayProduct({ product }) {
                         {name}
                     </h2>
                     <span className="price">
-                        MXN${price.toLocaleString()}
+                        USD${price.toLocaleString()}
                     </span>
                 </div>
             </a>

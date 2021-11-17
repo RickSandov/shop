@@ -50,7 +50,7 @@ export default function Product({ product }) {
                                 precio
                             </p>
                             <p className="price">
-                                MXN ${price.toLocaleString()}
+                                USD${price.toLocaleString()}
                             </p>
                         </div>
                         <div className="item">
