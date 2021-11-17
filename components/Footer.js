@@ -48,7 +48,7 @@ export default function Footer(params) {
                                 Politica de Privacidad
                             </a>
                         </Link>
-                        <Link href='/terminos-y-condicines' >
+                        <Link href='/terminos-y-condiciones' >
                             <a className='footer__link' >
                                 Terminos y Condiciones
                             </a>

@@ -60,7 +60,7 @@ export default function ProductResume({ product, seeOrder }) {
             </div>
             <div className="total">
                 <span>Total:</span>
-                <p>MXN${total.toLocaleString()}</p>
+                <p>USD${total.toLocaleString()}</p>
             </div>
         </div>
     )
