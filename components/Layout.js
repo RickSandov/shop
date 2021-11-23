@@ -1,7 +1,6 @@
 import Footer from './Footer';
 import Navbar from './Navbar';
 import Head from 'next/head';
-import Script from 'next/script';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -23,22 +22,22 @@ export default function Layout({ children }) {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://pay.conekta.com/v1.0/js/conekta-checkout.min.js';
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <>
       <Head>
-        <title>Pretty Prieto</title>
-        <meta
-          name='description'
-          content='Pretty Prieto tienda de ropa en línea'
-        />
+        <title>G Rings</title>
+        <meta name='description' content='G Rings' />
         <link rel='icon' href='/favicon.ico' />
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         {/* <script src="https://www.paypal.com/sdk/js?client-id=test"></script> */}
       </Head>
-      <Script
-        src='https://www.paypal.com/sdk/js?client-id=AaLHeBWsQYKa3NylyCSLBNpv7hZKrkn0-nqISJSKaIQc3y4ZJCmhz1E_Jn3vcIJtgev3WA3Dg6TIkTfF'
-        strategy='beforeInteractive'
-      />
 
       <Navbar />
       {children}

@@ -1,79 +1,192 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 export default function Privacidad() {
-    return (
-        <div className="generic-container">
+  return (
+    <div className='generic-container'>
+      <Head>
+        <title>G Rings | Politica de privacidad</title>
+        <meta name='description' content='Política de privacidad de G Rings' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
 
-            <Head>
-                <title>Pretty Prieto || Politica de privacidad</title>
-                <meta name="description" content="Política de privacidad de Pretty Prieto" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+      <h1 className='title'>Política de privacidad</h1>
 
-            <h1 className="title">
-                Política de privacidad
-            </h1>
+      <p className='paraph'>
+        Con fundamento en los artículos 15 y 16 de la Ley Federal de Protección
+        de Datos Personales en Posesión de los Particulares, Grings pone a su
+        disposición el siguiente aviso de privacidad, así como los datos
+        referentes a la empresa:
+      </p>
 
-            <p className="paraph">
-                Cuando visitas el Sitio, recopilamos automáticamente cierta información sobre tu dispositivo, incluida información sobre tu navegador web, dirección IP, zona horaria y algunas de las cookies que están instaladas en tu dispositivo.
-            </p>
+      <p className='paraph mt'>
+        En la Joyería Grings estamos consciente de lo importante que es el
+        salvaguardar la información personal de nuestros clientes, por lo que
+        queremos que usted tenga claro el uso que se le dará a sus datos
+        personales, así como el manejo de los mismos, teniendo siempre como
+        prioridad la confianza que usted nos proporciona para salvaguardar de
+        los mismos. En este Aviso de Privacidad se describe la forma en que
+        Joyería Grings recopila y trata sus datos personales a través de los
+        sitios web, dispositivos, servicios y tienda en línea que hace
+        referencia a este Aviso de Privacidad. Al utilizar los Servicios de
+        Joyería Grings, usted está dando consentimiento amplio a las prácticas
+        que a continuación se describen.
+      </p>
 
-            <p className="paraph mt">
-                Además, a medida que navegas por el Sitio, recopilamos información sobre las páginas web individuales o los productos que ves, qué sitios web o términos de búsqueda te remiten al Sitio, e información sobre cómo interactúas con el Sitio. Nos referimos a esta información recopilada automáticamente como Información del Dispositivo (device information).
-            </p>
+      <p className='paraph mt'>
+        Joyería Grings con correo electrónico contacto@grings.com.mx
+      </p>
 
-            <p className="paraph mt">
-                Además, cuando efectúas una compra o intentas realizar una compra a través del Sitio, recopilamos cierta información tuya, como tu nombre, dirección de facturación, dirección de envío, información de pago, incluidos números de tarjetas de crédito (menciona todos los tipos de pagos aceptados), dirección de email y el número de teléfono. Esto se denomina Información del Pedido.
+      <h2 className='question'>¿Con qué finalidad se recaban sus datos?</h2>
+      <p className='paraph mt'>
+        Recopilamos y almacenamos todos los datos que usted nos proporciona en
+        relación con los Servicios de Joyería Grings. De ninguna manera
+        divulgaremos la información que esté en nuestra posesión con ninguna
+        persona o empresa, los datos personales que usted nos proporcione serán
+        única y exclusivamente utilizados para los fines descritos a
+        continuación
+      </p>
 
-                Asegúrate de mencionar toda otra información que recopiles.
+      <ul className='list'>
+        <li>
+          Contactar a nuestros cliente y potenciales clientes cuando sea
+          necesario para poder completar los procedimientos de compra.
+        </li>
+        <li>
+          Proporcionar la facturación correcta y completa a nuestros clientes
+        </li>
+        <li>Entregar los productos adquiridos en el destino indicado.</li>
+        <li>
+          Llamar en caso de tener duda o incertidumbre sobre algún dato
+          relacionado a la venta realizada.
+        </li>
+        <li>Envío de Promociones sobre nuestros productos</li>
+        <li>Mercadotecnia y posicionamiento de la Marca</li>
+      </ul>
 
-                Al referirnos a Información Personal en esta Política de Privacidad, estamos hablando tanto de la Información del Dispositivo como de la Información del Pedido.
-            </p>
+      <h2 className='question'>
+        ¿Cuáles son los datos personales que se utilizarán para estos fines?
+      </h2>
 
-            <h2 className="subtitle">
-                Cómo usamos tu información personal
-            </h2>
+      <ul className='list'>
+        <li>Nombre</li>
+        <li>Registro Federal del Contribuyente</li>
+        <li>Domicilio</li>
+        <li>Correo Electrónico</li>
+        <li>Número de tarjetas</li>
+      </ul>
 
-            <p className="paraph">
-                Utilizamos la Información de Pedido que recopilamos por lo general para cumplir con los pedidos realizados a través del Sitio (incluido el procesamiento de tu información de pago, la organización del envío y el envío de facturas y/o confirmaciones de pedidos).
-            </p>
-
-            <p className="paraph mt">
-                Además, usamos esta Información del Pedido para: comunicarnos contigo, examinar nuestros pedidos para detectar posibles riesgos o fraudes, para (en línea con las preferencias que has compartido con nosotros) ofrecerte información o publicidad relacionada con nuestros productos o servicios.
-            </p>
-
-            <p className="paraph mt">
-                Utilizamos la Información del Dispositivo que recopilamos para ayudarnos a detectar posibles riesgos y fraudes (en particular, tu dirección IP) y, en general, para mejorar y optimizar nuestro sitio.
-            </p>
-
-            <h2 className="subtitle">
-                Tus derechos
-            </h2>
-
-            <p className="paraph">
-                Si eres un residente europeo, tienes derecho a acceder a la información personal que tenemos sobre ti y a solicitar que tu información personal se corrija, actualice o elimine. Si deseas ejercer este derecho, por favor contáctanos.
-            </p>
-
-            <p className="paraph mt">
-                Además, si eres un residente europeo, notamos que estamos procesando tu información para cumplir con los contratos que podríamos tener contigo (por ejemplo, si realizas un pedido a través del Sitio), o de otra manera para perseguir nuestros intereses comerciales legítimos mencionados anteriormente.
-            </p>
-
-            <h2 className="subtitle">
-                Retención de datos
-            </h2>
-
-            <p className="paraph">
-                Cuando realices un pedido a través del Sitio, mantendremos tu Información de Pedido para nuestros registros a menos que y hasta que nos solicites eliminar esta información.
-            </p>
-
-            <h2 className="subtitle">
-                Menores
-            </h2>
-
-            <p className="paraph">
-                El Sitio no está destinado a personas menores de edad (EDAD CLARAMENTE MENCIONADA).
-            </p>
-
-        </div>
-    )
+      <h2 className='question'>
+        ¿Cómo puede acceder, rectificar o cancelar sus datos personales, u
+        oponerse a su uso?
+      </h2>
+      <p className='paraph mt'>
+        Nuestra base de datos se encuentra protegida tanto física como
+        electrónicamente, por lo que el acceso a la misma sólo es al personal
+        seleccionado que labora en Joyería Grings. A su vez de acuerdo con el
+        artículo 16 párrafo segundo de la Constitución toda persona que utilice
+        nuestros servicios y nos proporcione datos se le reitera que puede hacer
+        uso de sus derechos ARCO (derechos de acceso, rectificación, cancelación
+        y oposición) sobre sus datos personales proporcionados a la empresa, por
+        lo que cuenta con los siguientes derechos:
+      </p>
+      <ul className='list'>
+        <li>
+          Obtener sus datos personales que se encuentran en poder de la empresa.
+        </li>
+        <li>
+          Rectificar sus datos personales cuando sean inexactos o incompletos.
+        </li>
+        <li>
+          Cancelarlos cuando considere que no se requieren para alguna de las
+          finalidades señaladas en este aviso de privacidad, estén siendo
+          utilizados dichos datos para finalidades no consentidas o haya
+          finalizado la relación contractual o de servicio.
+        </li>
+        <li>
+          Tener acceso al aviso de privacidad al que están sujetos sus datos
+          personales.
+        </li>
+      </ul>
+      <p className='paraph mt'>
+        Para revocar su consentimiento y conocer el tiempo de respuesta sobre
+        dicho trámite usted deberá presentar una solicitud, que de acuerdo con
+        el artículo 22 de la Ley hace valer sus derechos ARCO, por lo que
+        deberá:
+      </p>
+      <p className='paraph mt'>
+        <strong>
+          Asistir personalmente o en su defecto su representante legal a las
+          oficinas de la Empresa ubicadas en Calle Agata #317 , Joyas del Valle,
+          C.P.34237, Durango, Durango México. En caso de no poder asistir se
+          podrá enviar un correo electrónico. Son requeridos su identificación
+          oficial (como garantía de titularidad) presentando un Formato de
+          Solicitud Arco de la siguiente manera:
+        </strong>
+      </p>
+      <p className='paraph mt'>
+        En Forma Presencial: Acudir a nuestras oficinas y llenar la forma que se
+        le facilitará (sin costo alguno) cumpliendo con los siguientes
+        requisitos:
+      </p>
+      <ul className='list'>
+        <li>
+          Nombre del titular de los datos personales y su domicilio u otro medio
+          para que la empresa le comunique la respuesta dada a su solicitud.
+        </li>
+        <li>
+          Los documentos que acrediten la identidad o, en su caso, la
+          representación legal del titular.
+        </li>
+        <li>
+          La descripción clara y precisa de los datos personales respecto de los
+          que se busca acceder, rectificar, cancelar u oponerse a su uso.
+        </li>
+      </ul>
+      <p className='paraph mt'>
+        Por medio de correo electrónico: Enviar un correo electrónico a la
+        dirección que aparece al inicio de este Aviso de Privacidad, desde la
+        dirección con la que nos hemos comunicado con usted, cumpliendo con los
+        siguientes requisitos:
+      </p>
+      <ul className='list'>
+        <li>Nombre del titular.</li>
+        <li>
+          Presentar documentos que acrediten la identidad del interesado o, en
+          su caso, la representación legal del titular.
+        </li>
+        <li>
+          Describir de manera clara y precisa los datos personales respecto de
+          los que se busca acceder, rectificar, cancelar u oponerse a su uso o
+          tratamiento.
+        </li>
+      </ul>
+      <p className='paraph mt'>
+        Tiempo de Respuesta: El plazo para atender y resolver su solicitud será
+        conforme a lo señalado en los artículos 28 al 35 de LA LEY.
+      </p>
+      <p className='paraph mt'>
+        Usted puede revocar el consentimiento que, en su caso, nos haya otorgado
+        para el tratamiento de sus datos personales. Sin embargo, es importante
+        que tenga en cuenta que no en todos los casos podremos atender su
+        solicitud o concluir el uso de forma inmediata, ya que es posible que
+        por alguna obligación legal requiramos seguir tratando sus datos
+        personales. Asimismo, usted deberá considerar que para ciertos fines, la
+        revocación de su consentimiento implicará que no le podamos seguir
+        prestando el servicio que nos solicitó, o la conclusión de su relación
+        con nosotros.
+      </p>
+      <h2 className='question'>
+        ¿Cómo puede conocer los cambios en este aviso de privacidad?
+      </h2>
+      <p className='paraph mt'>
+        Se le informa que la Empresa Grings puede realizar modificaciones a este
+        aviso de privacidad, por lo que se reserva el derecho para que sin
+        previo aviso se pueda modificar o actualizar este aviso de privacidad,
+        en caso de que se actualicen reformas legislativas o políticas internas
+        entre otras cosas. La empresa notificará y pondrá a su disposición las
+        modificaciones y/o alteraciones y/o cambios hechos al aviso de
+        privacidad a través de la página web http://www.grings.com.mx
+      </p>
+    </div>
+  );
 }

@@ -1,8 +1,7 @@
-
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['prettyprieto.com'],
+    domains: ['localhost'],
   },
   defaultLocale: 'es-MX',
-}
+};

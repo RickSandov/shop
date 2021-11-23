@@ -24,7 +24,7 @@ export default function Cart() {
     <>
       {cartLength < 1 ? (
         <div className='carrito-empty'>
-          <p>Aún no tienes productos en tu bolsa</p>
+          <p>Tu carrito esta vacio.</p>
         </div>
       ) : (
         <div className='carrito'>
@@ -37,24 +37,22 @@ export default function Cart() {
                 Subtotal:
                 <strong> USD${total.toLocaleString()}</strong>{' '}
               </span>
-              <p className={`shipment ${+total > 1000 && 'free'}`}>
+              <p className={`shipment ${+total > 50 && 'free'}`}>
                 Envío:
-                <strong>
-                  {+total > 1000 ? <del> USD$120</del> : ' USD$120'}
-                </strong>
+                <strong>{+total < 50 ? <del> USD$12</del> : ' USD$12'}</strong>
               </p>
               <p className='resume-total'>
                 Total:
                 <strong>
                   USD$
-                  {+total < 1000
-                    ? (total + 120).toLocaleString()
+                  {+total > 50
+                    ? (total + 12).toLocaleString()
                     : total.toLocaleString()}
                 </strong>
               </p>
             </div>
           </div>
-          <ClientInfo shipment={total > 1000} />
+          <ClientInfo shipment={total > 50 ? 0 : 12} />
         </div>
       )}
     </>

@@ -11,8 +11,8 @@ export default function Checkout({ formValues, shipment, setLoading }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const key = 'key_Y4fSx3ztSKgiQFVCDWB2hdg'; // producción
-    // const key = 'key_Aryho89vKyrSk7vzhCi9qxg'; // desarrollo
+    // const key = 'key_Y4fSx3ztSKgiQFVCDWB2hdg'; // producción
+    const key = 'key_OLRgpA9qjhirzh7ZHTCaaPg'; // desarrollo
     ConektaCheckoutComponents.iFrame({
       publicKey: key,
       options: {
@@ -23,6 +23,7 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         backgroundcolor: '#ccc',
       },
       targetIFrame: '#conektaIframeContainer',
+      currency: 'USD',
     });
   }, []);
 
@@ -55,7 +56,7 @@ export default function Checkout({ formValues, shipment, setLoading }) {
     let tokenPromise;
 
     try {
-      tokenPromise = await window.ConektaCheckoutComponents.createToken();
+      tokenPromise = await ConektaCheckoutComponents.createToken();
     } catch (err) {
       dispatch(uiTempToast(err.message_to_purchaser, true));
     }
@@ -83,24 +84,18 @@ export default function Checkout({ formValues, shipment, setLoading }) {
         })),
         payment: {
           method: 'tarjeta',
-          shipment: shipment || 120,
-          // shipment: true,
+          shipment: shipment || 12,
           token: id, // aquí va el token
         },
       };
 
-      // console.log(data);
-
-      const response = await fetch(
-        'https://prettyprieto.com/api/private/sales/',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch('http://localhost:3000/api/public/sales/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
       const res = await response.json();
 
@@ -130,13 +125,6 @@ export default function Checkout({ formValues, shipment, setLoading }) {
       <div className='conekta-iframe-container'>
         <div id='conektaIframeContainer'></div>
       </div>
-      <input type='checkbox' required='true' name='agree' />
-      <label htmlFor='agree'>
-        Acepto los{' '}
-        <Link href='/terminos-y-condiciones'>
-          <a>Terminos y Condiciones.</a>
-        </Link>
-      </label>
       <div className='btn'>
         <button>pagar</button>
       </div>

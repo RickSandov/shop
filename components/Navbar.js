@@ -1,47 +1,60 @@
-
 import Link from 'next/link';
 import Image from 'next/image';
 import DisplayCart from './cart/DisplayCart';
 import ActiveLink from './ActiveLink';
+import { useEffect, useState } from 'react';
+import { asyncHandler } from '..//functions/GeneralHelpers';
 
-export default function Navbar({ categories = ['Playeras', 'Sudaderas', 'Originales'] }) {
+export default function Navbar() {
+  const [ctgs, setCategories] = useState([]);
 
-    return (
-        <nav className='navbar' >
-            <div className="ad">
-                <p>Envío gratis en pedidos superiores a USD$50.00</p>
-            </div>
-            <div className="navbar__top">
-                <div className="logo-box">
+  useEffect(async () => {
+    const [rawCategories, fetchCategoriesError] = await asyncHandler(
+      fetch('http://localhost:3000/api/public/categories')
+    );
 
-                    <Link href={'/'} >
-                        <a className='logo' >
-                            <Image src="/img/logotry1.png" alt="Vercel Logo" width={200} height={180} priority />
-                            {/* <h1>Pretty Prieto MX</h1> */}
-                        </a>
-                    </Link>
+    const { categories } =
+      (rawCategories && (await rawCategories.json())) || [];
 
-                </div>
+    if (fetchCategoriesError || categories.length < 0)
+      return setCategories(['Anillos', 'Anillos de Plata', 'Anillos de Oro']);
 
+    if (categories && categories.length > 0)
+      setCategories(categories.map(ctg => ctg.name));
+  }, []);
 
-                <DisplayCart />
+  return (
+    <nav className='navbar'>
+      <div className='navbar__top'>
+        <div className='logo-box'>
+          <Link href={'/'}>
+            <a className='logo'>
+              <Image
+                src='/img/logo.png'
+                alt='G-Rings'
+                width={270}
+                height={180}
+                priority
+              />
+              {/* <h1>G Rings</h1> */}
+            </a>
+          </Link>
+        </div>
 
-
-            </div>
-            <div className="navbar__bottom">
-                <div className="navbar__links">
-                    {
-                        categories.map(categorie => (
-
-                            <ActiveLink key={categorie} activeClassName='link active' href={`/${categorie}`} >
-                                <a className="link"  > {categorie} </a>
-                            </ActiveLink>
-
-                        ))
-                    }
-                </div>
-            </div>
-        </nav>
-    )
-};
-
+        <DisplayCart />
+      </div>
+      <div className='navbar__bottom'>
+        <div className='navbar__links'>
+          {ctgs.map(ctg => (
+            <ActiveLink
+              key={ctg}
+              activeClassName='link active'
+              href={`/${ctg}`}>
+              <a className='link'> {ctg} </a>
+            </ActiveLink>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+}

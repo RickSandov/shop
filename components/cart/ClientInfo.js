@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from '../../hooks/useForm';
 import Paypal from '../payment/Paypal';
 import Link from 'next/link';
+import Checkout from '../payment/Checkout';
 
 export default function ClientInfo({ shipment }) {
   const [loading, setLoading] = useState(false);
@@ -141,7 +142,7 @@ export default function ClientInfo({ shipment }) {
           </label>
         </div>
         {agree && (
-          <Paypal
+          <Checkout
             shipment={shipment}
             formValues={formValues}
             setLoading={setLoading}
